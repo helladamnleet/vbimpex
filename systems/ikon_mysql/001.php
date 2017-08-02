@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_001 Check system module
+* ikon_mysqli_001 Check system module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_001 extends ikon_mysql_000
+class ikon_mysqli_001 extends ikon_mysqli_000
 {
 	var $_version = "0.0.1";
 	var $_modulestring 	= 'Check and update database';
 
 
-	function ikon_mysql_001()
+	function ikon_mysqli_001()
 	{
 	}
 

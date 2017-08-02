@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_009 Import Pmtext module
+* ikon_mysqli_009 Import Pmtext module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_009 extends ikon_mysql_000
+class ikon_mysqli_009 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '004';
 	var $_modulestring 	= 'Import Private Messages';
 
 
-	function ikon_mysql_009()
+	function ikon_mysqli_009()
 	{
 		// Constructor
 	}
@@ -105,7 +105,7 @@ class ikon_mysql_009 extends ikon_mysql_000
 
 
 		// Get an array of pmtext details
-		$pms_array 	= $this->get_ikon_mysql_pmtext_details($Db_source, $source_database_type, $source_table_prefix, $pmtext_start_at, $pmtext_per_page);
+		$pms_array 	= $this->get_ikon_mysqli_pmtext_details($Db_source, $source_database_type, $source_table_prefix, $pmtext_start_at, $pmtext_per_page);
 
 
 		// User info
@@ -139,7 +139,7 @@ class ikon_mysql_009 extends ikon_mysql_000
 
 				$vB_pm_text->set_value('mandatory', 'fromuserid',		$user_ids_array[$from_user_id]);
 				$vB_pm_text->set_value('mandatory', 'title',			$pm['TITLE']);
-				$vB_pm_text->set_value('mandatory', 'message',			$this->html_2_bb($this->ikon_mysql_html_2_bb($pm['MESSAGE'])));
+				$vB_pm_text->set_value('mandatory', 'message',			$this->html_2_bb($this->ikon_mysqli_html_2_bb($pm['MESSAGE'])));
 				$vB_pm_text->set_value('mandatory', 'importpmid',		$pm_id);
 
 				$vB_pm_text->set_value('mandatory', 'touserarray',		addslashes(serialize($touserarray)));
@@ -217,7 +217,7 @@ class ikon_mysql_009 extends ikon_mysql_000
 
 				$vB_pm_text->set_value('mandatory', 'fromuserid',		$user_ids_array[$from_user_id]);
 				$vB_pm_text->set_value('mandatory', 'title',			$pm['TITLE']);
-				$vB_pm_text->set_value('mandatory', 'message',			$this->html_2_bb($this->ikon_mysql_html_2_bb($pm['MESSAGE'])));
+				$vB_pm_text->set_value('mandatory', 'message',			$this->html_2_bb($this->ikon_mysqli_html_2_bb($pm['MESSAGE'])));
 				$vB_pm_text->set_value('mandatory', 'importpmid',		$pm_id);
 
 				$vB_pm_text->set_value('mandatory', 'touserarray',		addslashes(serialize($touserarray)));

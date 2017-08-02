@@ -11,19 +11,19 @@
 /**
 * ikon_mysql
 /**
-* ikon_mysql_001 Associate Users
+* ikon_mysqli_001 Associate Users
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_002 extends ikon_mysql_000
+class ikon_mysqli_002 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '001';
 	var $_modulestring 	= 'Associate Users';
 
 
-	function ikon_mysql_002()
+	function ikon_mysqli_002()
 	{
 	}
 
@@ -102,7 +102,7 @@ class ikon_mysql_002 extends ikon_mysql_000
 		if ($associate_users == 1)
 		{
 			// Get a list of the ikon_mysql members in this current selection
-			$userarray = $this->get_ikon_mysql_members_list($Db_source, $source_database_type, $source_table_prefix, $associate_start_at, $associate_per_page);
+			$userarray = $this->get_ikon_mysqli_members_list($Db_source, $source_database_type, $source_table_prefix, $associate_start_at, $associate_per_page);
 
 
 			// Build a list of the ubb users with a box to enter a vB user id into

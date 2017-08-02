@@ -334,7 +334,7 @@ class DCFm_000 extends ImpExModule
 			return false;
 		}
 
-		if (do_mysql_fetch_assoc)
+		if (do_mysqli_fetch_assoc)
 		{
 			return $id['id'];
 		}

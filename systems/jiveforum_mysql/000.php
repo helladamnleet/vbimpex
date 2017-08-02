@@ -14,7 +14,7 @@
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_000 extends ImpExModule
+class jiveforum_mysqli_000 extends ImpExModule
 {
 	/**
 	* Class version
@@ -48,7 +48,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	);
 
 
-	function jiveforum_mysql_000()
+	function jiveforum_mysqli_000()
 	{
 	}
 
@@ -60,7 +60,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function jiveforum_mysql_html($text)
+	function jiveforum_mysqli_html($text)
 	{
 		return $text;
 	}
@@ -77,7 +77,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_jiveforum_mysql_members_list(&$Db_object, &$databasetype, &$tableprefix, &$start, &$per_page)
+	function get_jiveforum_mysqli_members_list(&$Db_object, &$databasetype, &$tableprefix, &$start, &$per_page)
 	{
 		$return_array = array();
 
@@ -120,7 +120,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_jiveforum_mysql_forum_details(&$Db_object, &$databasetype, &$tableprefix, &$start_at, &$per_page)
+	function get_jiveforum_mysqli_forum_details(&$Db_object, &$databasetype, &$tableprefix, &$start_at, &$per_page)
 	{
 		$return_array = array();
 
@@ -149,7 +149,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_jiveforum_mysql_cat_details(&$Db_object, &$databasetype, &$tableprefix)
+	function get_jiveforum_mysqli_cat_details(&$Db_object, &$databasetype, &$tableprefix)
 	{
 		$return_array = array();
 
@@ -197,7 +197,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_jiveforum_mysql_post_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_jiveforum_mysqli_post_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -246,7 +246,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_jiveforum_mysql_thread_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_jiveforum_mysqli_thread_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -295,7 +295,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_jiveforum_mysql_user_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_jiveforum_mysqli_user_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -333,7 +333,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	}
 
 
-	function get_jiveforum_mysql_post_detail(&$Db_object, &$databasetype, &$tableprefix, $post_id)
+	function get_jiveforum_mysqli_post_detail(&$Db_object, &$databasetype, &$tableprefix, $post_id)
 	{
 		$return_array = array();
 
@@ -364,7 +364,7 @@ class jiveforum_mysql_000 extends ImpExModule
 	}
 
 
-	function get_jiveforum_mysql_correct_catid(&$Db_object, &$databasetype, &$tableprefix, $post_id)
+	function get_jiveforum_mysqli_correct_catid(&$Db_object, &$databasetype, &$tableprefix, $post_id)
 	{
 		$return_array = array();
 

@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_006 Import Thread module
+* ikon_mysqli_006 Import Thread module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_006 extends ikon_mysql_000
+class ikon_mysqli_006 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '005';
 	var $_modulestring 	= 'Import Thread';
 
 
-	function ikon_mysql_006()
+	function ikon_mysqli_006()
 	{
 		// Constructor
 	}
@@ -105,7 +105,7 @@ class ikon_mysql_006 extends ikon_mysql_000
 
 
 		// Get an array of thread details
-		$thread_array 	= $this->get_ikon_mysql_thread_details($Db_source, $source_database_type, $source_table_prefix, $thread_start_at, $thread_per_page);
+		$thread_array 	= $this->get_ikon_mysqli_thread_details($Db_source, $source_database_type, $source_table_prefix, $thread_start_at, $thread_per_page);
 
 
 		// Get some refrence arrays (use and delete as nessesary).

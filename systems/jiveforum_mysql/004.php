@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* jiveforum_mysql_004 Import Forum module
+* jiveforum_mysqli_004 Import Forum module
 *
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_004 extends jiveforum_mysql_000
+class jiveforum_mysqli_004 extends jiveforum_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '003';
 	var $_modulestring 	= 'Import Forum';
 
-	function jiveforum_mysql_004()
+	function jiveforum_mysqli_004()
 	{
 		// Constructor
 	}
@@ -99,7 +99,7 @@ class jiveforum_mysql_004 extends jiveforum_mysql_000
 		{
 			// Sort out the categories
 			// NOTE: The forums and the categories are reversed in jiveForum ....... how specail ......
-			$categories_array = $this->get_jiveforum_mysql_cat_details($Db_source, $source_database_type, $source_table_prefix);
+			$categories_array = $this->get_jiveforum_mysqli_cat_details($Db_source, $source_database_type, $source_table_prefix);
 
 			$displayobject->display_now("<h4>Importing " . count($categories_array) . " caterories</h4>");
 
@@ -147,7 +147,7 @@ class jiveforum_mysql_004 extends jiveforum_mysql_000
 		else
 		{
 			// Sort out the forums
-			$forum_array  	=  $this->get_jiveforum_mysql_forum_details($Db_source, $source_database_type, $source_table_prefix, $forum_start_at, $forum_per_page);
+			$forum_array  	=  $this->get_jiveforum_mysqli_forum_details($Db_source, $source_database_type, $source_table_prefix, $forum_start_at, $forum_per_page);
 			$cat_ids 		=  $this->get_category_ids($Db_target, $target_database_type, $target_table_prefix);
  
 			$displayobject->display_now("<h4>Importing " . count($forum_array) . " forums</h4><p><b>From</b> : " . $forum_start_at . " ::  <b>To</b> : " . ($forum_start_at + $forum_per_page) ."</p>");

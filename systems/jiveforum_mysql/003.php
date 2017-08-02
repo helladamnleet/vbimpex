@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* jiveforum_mysql_003 Import User module
+* jiveforum_mysqli_003 Import User module
 *
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_003 extends jiveforum_mysql_000
+class jiveforum_mysqli_003 extends jiveforum_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '001';
 	var $_modulestring 	= 'Import User';
 
-	function jiveforum_mysql_003()
+	function jiveforum_mysqli_003()
 	{
 		// Constructor
 	}
@@ -102,7 +102,7 @@ class jiveforum_mysql_003 extends jiveforum_mysql_000
 		}
 
 		// Get an array of user details
-		$user_array	= $this->get_jiveforum_mysql_user_details($Db_source, $source_database_type, $source_table_prefix, $user_start_at, $user_per_page);
+		$user_array	= $this->get_jiveforum_mysqli_user_details($Db_source, $source_database_type, $source_table_prefix, $user_start_at, $user_per_page);
 		$usergroups	=	$this->get_imported_group_ids($Db_target, $target_database_type, $target_table_prefix);
 
 		// Display count and pass time

@@ -15,7 +15,7 @@
 * @package 		ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_011 extends ikon_mysql_000
+class ikon_mysqli_011 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '007';
@@ -24,7 +24,7 @@ class ikon_mysql_011 extends ikon_mysql_000
 	// Due to there being no import id's
 	var $_dupe_checking = false;
 
-	function ikon_mysql_011()
+	function ikon_mysqli_011()
 	{
 	}
 
@@ -104,9 +104,9 @@ class ikon_mysql_011 extends ikon_mysql_000
 				$sessionobject->timing($class_num,'start' ,$sessionobject->get_session_var('autosubmit'));
 			}
 
-			$attachment_array 		= $this->get_ikon_mysql_attachment_rows($Db_source, $source_database_type, $source_table_prefix, $start_at, $per_page);
+			$attachment_array 		= $this->get_ikon_mysqli_attachment_rows($Db_source, $source_database_type, $source_table_prefix, $start_at, $per_page);
 			// Might be faster ......
-			$attach_details_array		= $this->get_ikon_mysql_attachment_details_array($Db_source, $source_database_type, $source_table_prefix);
+			$attach_details_array		= $this->get_ikon_mysqli_attachment_details_array($Db_source, $source_database_type, $source_table_prefix);
 
 			$last_pass 				= $sessionobject->get_session_var('last_pass');
 			$attachment_object 		= new ImpExData($Db_target, $sessionobject,'attachment');
@@ -116,7 +116,7 @@ class ikon_mysql_011 extends ikon_mysql_000
 			$start = time();
 			foreach ($attachment_array as $attachment_id => $attachment)
 			{
-				$the_file = $this->get_ikon_mysql_attachment($sessionobject->get_session_var('uploadfolder') , $attachment['FILE_NAME']);
+				$the_file = $this->get_ikon_mysqli_attachment($sessionobject->get_session_var('uploadfolder') , $attachment['FILE_NAME']);
 
 				if($the_file AND $attachment['FILE_NAME'] != '')
 				{

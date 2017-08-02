@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_007 Import Post module
+* ikon_mysqli_007 Import Post module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_007 extends ikon_mysql_000
+class ikon_mysqli_007 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '006';
 	var $_modulestring 	= 'Import Post';
 
 
-	function ikon_mysql_007()
+	function ikon_mysqli_007()
 	{
 		// Constructor
 	}
@@ -103,11 +103,11 @@ class ikon_mysql_007 extends ikon_mysql_000
 
 
 		// Get an array of post details
-		$post_array 	= $this->get_ikon_mysql_post_details($Db_source, $source_database_type, $source_table_prefix, $post_start_at, $post_per_page);
+		$post_array 	= $this->get_ikon_mysqli_post_details($Db_source, $source_database_type, $source_table_prefix, $post_start_at, $post_per_page);
 
 		$user_ids_array = $this->get_user_ids($Db_target, $target_database_type, $target_table_prefix);
 		$user_name_array = $this->get_username($Db_target, $target_database_type, $target_table_prefix);
-		$threads_ids = $this->get_ikon_mysql_threads_ids($Db_target, $target_database_type, $target_table_prefix);
+		$threads_ids = $this->get_ikon_mysqli_threads_ids($Db_target, $target_database_type, $target_table_prefix);
 
 		// Display count and pass time
 		$displayobject->display_now('<h4>Importing ' . count($post_array) . ' posts</h4><p><b>From</b> : ' . $post_start_at . ' ::  <b>To</b> : ' . ($post_start_at + count($post_array)) . '</p>');
@@ -142,7 +142,7 @@ class ikon_mysql_007 extends ikon_mysql_000
 			$try->set_value('nonmandatory', 'username',			$user_name_array[$user_id]);
 			#$try->set_value('nonmandatory', 'title',			'Imported post');
 			$try->set_value('nonmandatory', 'dateline',			$post_details['POST_DATE']);
-			$try->set_value('nonmandatory', 'pagetext',			$this->ikon_mysql_html_2_bb($this->html_2_bb($post_details['POST'])));
+			$try->set_value('nonmandatory', 'pagetext',			$this->ikon_mysqli_html_2_bb($this->html_2_bb($post_details['POST'])));
 			$try->set_value('nonmandatory', 'allowsmilie',		$post_details['ENABLE_EMO']);
 			$try->set_value('nonmandatory', 'showsignature',	$post_details['ENABLE_SIG']);
 			$try->set_value('nonmandatory', 'ipaddress',		$post_details['IP_ADDR']);

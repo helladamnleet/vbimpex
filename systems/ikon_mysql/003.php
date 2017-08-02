@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_003 Import Usergroup module
+* ikon_mysqli_003 Import Usergroup module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_003 extends ikon_mysql_000
+class ikon_mysqli_003 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '001';
 	var $_modulestring 	= 'Import Usergroup';
 
 
-	function ikon_mysql_003()
+	function ikon_mysqli_003()
 	{
 		// Constructor
 	}
@@ -105,7 +105,7 @@ class ikon_mysql_003 extends ikon_mysql_000
 
 
 		// Get an array of usergroup details
-		$usergroup_array 	= $this->get_ikon_mysql_usergroup_details($Db_source, $source_database_type, $source_table_prefix, $usergroup_start_at, $usergroup_per_page);
+		$usergroup_array 	= $this->get_ikon_mysqli_usergroup_details($Db_source, $source_database_type, $source_table_prefix, $usergroup_start_at, $usergroup_per_page);
 
 		// Display count and pass time
 		$displayobject->display_now('<h4>Importing ' . count($usergroup_array) . ' usergroups</h4><p><b>From</b> : ' . $usergroup_start_at . ' ::  <b>To</b> : ' . ($usergroup_start_at + count($usergroup_array)) . '</p>');

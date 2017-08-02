@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* jiveforum_mysql_005 Import Thread module
+* jiveforum_mysqli_005 Import Thread module
 *
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_005 extends jiveforum_mysql_000
+class jiveforum_mysqli_005 extends jiveforum_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '004';
 	var $_modulestring 	= 'Import Thread';
 
-	function jiveforum_mysql_005()
+	function jiveforum_mysqli_005()
 	{
 		// Constructor
 	}
@@ -97,7 +97,7 @@ class jiveforum_mysql_005 extends jiveforum_mysql_000
 		}
 
 		// Get an array of thread details
-		$thread_array 	= $this->get_jiveforum_mysql_thread_details($Db_source, $source_database_type, $source_table_prefix, $thread_start_at, $thread_per_page);
+		$thread_array 	= $this->get_jiveforum_mysqli_thread_details($Db_source, $source_database_type, $source_table_prefix, $thread_start_at, $thread_per_page);
 
 		// Get some refrence arrays (use and delete as nessesary).
 		// User info
@@ -114,7 +114,7 @@ class jiveforum_mysql_005 extends jiveforum_mysql_000
 		{
 			$try = (phpversion() < '5' ? $thread_object : clone($thread_object));
 
-			$post_details = $this->get_jiveforum_mysql_post_detail($Db_source, $source_database_type, $source_table_prefix, $thread_details['rootMessageID']);
+			$post_details = $this->get_jiveforum_mysqli_post_detail($Db_source, $source_database_type, $source_table_prefix, $thread_details['rootMessageID']);
 
 			if(!$post_details)
 			{

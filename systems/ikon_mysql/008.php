@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_008 Import Poll module
+* ikon_mysqli_008 Import Poll module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_008 extends ikon_mysql_000
+class ikon_mysqli_008 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '006';
 	var $_modulestring 	= 'Import Poll';
 
 
-	function ikon_mysql_008()
+	function ikon_mysqli_008()
 	{
 		// Constructor
 	}
@@ -105,7 +105,7 @@ class ikon_mysql_008 extends ikon_mysql_000
 
 
 		// Get an array of poll details
-		$poll_array 	= $this->get_ikon_mysql_poll_details($Db_source, $source_database_type, $source_table_prefix, $poll_start_at, $poll_per_page);
+		$poll_array 	= $this->get_ikon_mysqli_poll_details($Db_source, $source_database_type, $source_table_prefix, $poll_start_at, $poll_per_page);
 
 
 		// Get some refrence arrays (use and delete as nessesary).
@@ -124,7 +124,7 @@ class ikon_mysql_008 extends ikon_mysql_000
 		{
 			$try = (phpversion() < '5' ? $poll_object : clone($poll_object));
 
-			$poll_voters_old = $this->get_ikon_mysql_vote_voters($Db_source, $source_database_type, $source_table_prefix, $poll_details['POLL_ID']);
+			$poll_voters_old = $this->get_ikon_mysqli_vote_voters($Db_source, $source_database_type, $source_table_prefix, $poll_details['POLL_ID']);
 
 			if(count($poll_voters_old) > 0)
 			{
@@ -138,7 +138,7 @@ class ikon_mysql_008 extends ikon_mysql_000
 			}
 
 
-			$poll_active = $this->get_ikon_mysql_poll_state($Db_source, $source_database_type, $source_table_prefix, $poll_details['POLL_ID']);
+			$poll_active = $this->get_ikon_mysqli_poll_state($Db_source, $source_database_type, $source_table_prefix, $poll_details['POLL_ID']);
 
 			preg_match_all('#\d+~::~<!--\d+-->(.*)~=~(\d+?)#siU', $poll_details['POLL_ANSWERS'], $matches);
 

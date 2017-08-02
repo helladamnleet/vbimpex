@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_010 Import Moderator module
+* ikon_mysqli_010 Import Moderator module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_010 extends ikon_mysql_000
+class ikon_mysqli_010 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '005';
 	var $_modulestring 	= 'Import Moderator';
 
 
-	function ikon_mysql_010()
+	function ikon_mysqli_010()
 	{
 		// Constructor
 	}
@@ -105,7 +105,7 @@ class ikon_mysql_010 extends ikon_mysql_000
 
 
 		// Get an array of moderator details
-		$moderator_array 	= $this->get_ikon_mysql_moderator_details($Db_source, $source_database_type, $source_table_prefix, $moderator_start_at, $moderator_per_page);
+		$moderator_array 	= $this->get_ikon_mysqli_moderator_details($Db_source, $source_database_type, $source_table_prefix, $moderator_start_at, $moderator_per_page);
 
 
 		// User info

@@ -11,19 +11,19 @@
 /**
 * jiveforum_mysql
 /**
-* jiveforum_mysql_001 Associate Users
+* jiveforum_mysqli_001 Associate Users
 *
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_002 extends jiveforum_mysql_000
+class jiveforum_mysqli_002 extends jiveforum_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '001';
 	var $_modulestring 	= 'Associate Users';
 
 
-	function jiveforum_mysql_002()
+	function jiveforum_mysqli_002()
 	{
 	}
 
@@ -102,7 +102,7 @@ class jiveforum_mysql_002 extends jiveforum_mysql_000
 		if ($associate_users == 1)
 		{
 			// Get a list of the jiveforum_mysql members in this current selection
-			$userarray = $this->get_jiveforum_mysql_members_list($Db_source, $source_database_type, $source_table_prefix, $associate_start_at, $associate_per_page);
+			$userarray = $this->get_jiveforum_mysqli_members_list($Db_source, $source_database_type, $source_table_prefix, $associate_start_at, $associate_per_page);
 
 
 			// Build a list of the ubb users with a box to enter a vB user id into

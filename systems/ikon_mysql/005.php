@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_005 Import Forum module
+* ikon_mysqli_005 Import Forum module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_005 extends ikon_mysql_000
+class ikon_mysqli_005 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '004';
 	var $_modulestring 	= 'Import Forum';
 
-	function ikon_mysql_005()
+	function ikon_mysqli_005()
 	{
 		// Constructor
 	}
@@ -98,7 +98,7 @@ class ikon_mysql_005 extends ikon_mysql_000
 		if($sessionobject->get_session_var('categoriesfinished') == 'FALSE')
 		{
 			// Sort out the categories
-			$categories_array = $this->get_ikon_mysql_cat_details($Db_source, $source_database_type, $source_table_prefix);
+			$categories_array = $this->get_ikon_mysqli_cat_details($Db_source, $source_database_type, $source_table_prefix);
 
 			$displayobject->display_now("<h4>Importing " . count($categories_array) . " caterories</h4>");
 
@@ -145,7 +145,7 @@ class ikon_mysql_005 extends ikon_mysql_000
 		else
 		{
 			// Sort out the forums
-			$forum_array  	=  $this->get_ikon_mysql_forum_details($Db_source, $source_database_type, $source_table_prefix, $forum_start_at, $forum_per_page);
+			$forum_array  	=  $this->get_ikon_mysqli_forum_details($Db_source, $source_database_type, $source_table_prefix, $forum_start_at, $forum_per_page);
 			$cat_ids 		=  $this->get_category_ids($Db_target, $target_database_type, $target_table_prefix);
 			$user_ids_array = $this->get_user_ids($Db_target, $target_database_type, $target_table_prefix);
 			$displayobject->display_now("<h4>Importing " . count($forum_array) . " forums</h4><p><b>From</b> : " . $forum_start_at . " ::  <b>To</b> : " . ($forum_start_at + count($forum_array)) ."</p>");

@@ -5,7 +5,7 @@
 || # ----------------------------------------------------------------
 || # All PHP code in this file is Copyright 2000-2014 vBulletin Solutions Inc.
 || # This code is made available under the Modified BSD License -- see license.txt
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 /**
@@ -39,7 +39,7 @@ class ImpExDatabaseCore extends ImpExFunction
 	* Empty
 	*
 	*/
-	function ImpExDatabaseCore()
+	function __constructor()
 	{
 	}
 
@@ -184,7 +184,7 @@ class ImpExDatabaseCore extends ImpExFunction
 					$sessionobject->add_error(substr(get_class($this) , -3), $displayobject->phrases['table_alter_fail'], $displayobject->phrases['table_alter_fail_rem']);
 				}
 			}
-		}	
+		}
 	}
 
 	/**
@@ -1896,7 +1896,7 @@ class ImpExDatabaseCore extends ImpExFunction
 		{
 			return;
 		}
-		
+
 		switch ($parenttype)
 		{
 			case 'post':
@@ -4001,7 +4001,7 @@ class ImpExDatabaseCore extends ImpExFunction
 	}
 
 	// TODO: Could be made redundant with a recursive idcache call
-	function get_post_parent_id($Db_object, $databasetype, $tableprefix, $import_post_id)
+	function get_post_parent_id(&$Db_object, &$databasetype, &$tableprefix, $import_post_id)
 	{
 		if ($databasetype == 'mysql')
 		{
@@ -6869,7 +6869,7 @@ class ImpExDatabaseCore extends ImpExFunction
 	* @param	object	databaseobject	The database object to run the query against
 	* @param	string	mixed			Table database type
 	* @param	string	mixed			The prefix to the table name i.e. 'vb3_'
- 	* @param	string	mixed			Productid of product 
+ 	* @param	string	mixed			Productid of product
 	* @param	string	mixed			Class of the content
 	*
 	* @return	int		Packageid
@@ -7078,7 +7078,7 @@ class ImpExCache
 					$this->cmsgrid_array[$importid] = $data['gridid'];
 				}
 				return $this->cmsgrid_array[$importid];
-				
+
 				break;
 			}
 

@@ -5,7 +5,7 @@
 || # ---------------------------------------------------------------- # ||
 || # Copyright 20002014 vBulletin Solutions Inc. All Rights Reserved. ||
 || # This code is made available under the Modified BSD License -- see license.txt # ||
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 
@@ -14,9 +14,9 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);;
 // this class is used in all scripts
 // do NOT fiddle unless you know what you are doing
 
-define('DBARRAY_NUM', MYSQL_NUM);
-define('DBARRAY_ASSOC', MYSQL_ASSOC);
-define('DBARRAY_BOTH', MYSQL_BOTH);
+define('DBARRAY_NUM', mysqli_NUM);
+define('DBARRAY_ASSOC', mysqli_ASSOC);
+define('DBARRAY_BOTH', mysqli_BOTH);
 
 if (!defined('IDIR')) { die; }
 
@@ -111,38 +111,40 @@ class DB_Sql_vb_impex
 		{
 			if ($usepconnect == true)
 			{
-				if(!function_exists('mysql_pconnect'))
+				if(!function_exists('mysqli_pconnect'))
 				{
-					die ('function mysql_pconnect() called though not supported in the PHP build');
+					die ('function mysqli_pconnect() called though not supported in the PHP build');
 				}
 
 				if (phpversion() >= '4.2.0')
 				{
-					$this->link_id = @mysql_pconnect($server, $user, $password, true);
+					$this->link_id = @mysqli_pconnect($server, $user, $password, true);
 				}
 				else
 				{
-					$this->link_id = @mysql_pconnect($server, $user, $password);
+					$this->link_id = @mysqli_pconnect($server, $user, $password);
 				}
 			}
 			else
 			{
-				if(!function_exists('mysql_connect'))
+				if(!function_exists('mysqli_connect'))
 				{
-					die ('function mysql_connect() called though not supported in the PHP build');
+					die ('function mysqli_connect() called though not supported in the PHP build');
 				}
 
 				if (phpversion() >= '4.2.0')
 				{
-					$this->link_id = @mysql_connect($server, $user, $password, true);
+					$this->link_id = @mysqli_connect('localhost', $user, $password);
 				}
 				else
 				{
-					$this->link_id = @mysql_connect($server, $user, $password);
+					$this->link_id = @mysqli_connect($server, $user, $password);
 				}
 			}
 			if (!$this->link_id)
 			{
+        echo 'wtf';
+        exit;
 				$this->halt('Link-ID == false, connect failed');
 				return false;
 			}
@@ -179,13 +181,13 @@ class DB_Sql_vb_impex
 
 	function affected_rows()
 	{
-		$this->rows = mysql_affected_rows($this->link_id);
+		$this->rows = mysqli_affected_rows($this->link_id);
 		return $this->rows;
 	}
 
 	function geterrdesc()
 	{
-		$this->error = mysql_error($this->link_id);
+		$this->error = mysqli_error($this->link_id);
 		return $this->error;
 	}
 
@@ -193,7 +195,7 @@ class DB_Sql_vb_impex
 	{
 		if($this->type == 'mysql')
 		{
-			$this->errno = mysql_errno($this->link_id);
+			$this->errno = mysqli_errno($this->link_id);
 			return $this->errno;
 		}
 	}
@@ -219,7 +221,7 @@ class DB_Sql_vb_impex
 
 		if($this->type == 'mysql' OR $this->type == 'mysqli')
 		{
-			$connectcheck = @mysql_select_db($this->database, $this->link_id);
+			$connectcheck = @mysqli_select_db($this->link_id,$this->database);
 			if ($connectcheck)
 			{
 				return true;
@@ -234,7 +236,7 @@ class DB_Sql_vb_impex
 
 	function query_unbuffered($query_string)
 	{
-		return $this->query($query_string, 'mysql_unbuffered_query');
+		return $this->query($query_string, 'mysqli_unbuffered_query');
 	}
 
 	function shutdown_query($query_string, $arraykey = 0)
@@ -255,7 +257,7 @@ class DB_Sql_vb_impex
 		}
 	}
 
-	function query($query_string, $query_type = 'mysql_query')
+	function query($query_string, $query_type = 'mysqli_query')
 	{
 		global $query_count, $querytime;
 
@@ -292,7 +294,7 @@ class DB_Sql_vb_impex
 
 		if (DB_QUERIES)
 		{
-			echo 'Query' . ($query_type == 'mysql_unbuffered_query' ? ' (UNBUFFERED)' : '') . ":\n<i>" . htmlspecialchars($query_string) . "</i>\n";
+			echo 'Query' . ($query_type == 'mysqli_unbuffered_query' ? ' (UNBUFFERED)' : '') . ":\n<i>" . htmlspecialchars($query_string) . "</i>\n";
 
 			global $pagestarttime;
 			$pageendtime = microtime();
@@ -317,11 +319,11 @@ class DB_Sql_vb_impex
 		// Do the actual query ::
 		 if (use_utf8_encode)
 		 {
-			 $query_id = $query_type(utf8_encode($query_string), $this->link_id);
+			 $query_id = $query_type($this->link_id, utf8_encode($query_string));
 		 }
 		 else
 		 {
-			 $query_id = $query_type($query_string, $this->link_id);
+			 $query_id = $query_type($this->link_id,$query_string);
 		 }
 
 
@@ -350,7 +352,7 @@ class DB_Sql_vb_impex
 
 			if (DB_EXPLAIN AND preg_match('#(^|\s)SELECT\s+#si', $query_string))
 			{
-				$explain_id = mysql_query("EXPLAIN " . $query_string, $this->link_id);
+				$explain_id = mysqli_query("EXPLAIN " . $query_string, $this->link_id);
 				echo "</pre>\n";
 				echo '
 				<table width="100%" border="1" cellpadding="2" cellspacing="1">
@@ -365,7 +367,7 @@ class DB_Sql_vb_impex
 					<td><b>Extra</b></td>
 				</tr>
 				';
-				while($array = mysql_fetch_assoc($explain_id))
+				while($array = mysqli_fetch_assoc($explain_id))
 				{
 					echo "
 					<tr>
@@ -396,7 +398,7 @@ class DB_Sql_vb_impex
 	{
 		if ($this->type == 'sqlsrv')
 		{
-			if (do_mysql_fetch_assoc)
+			if (do_mysqli_fetch_assoc)
 			{
 				return @sqlsrv_fetch_array($query_id, SQLSRV_FETCH_ASSOC);
 			}
@@ -409,7 +411,7 @@ class DB_Sql_vb_impex
 		if($this->type == 'mssql')
 		{
 			// retrieve row
-			if(do_mysql_fetch_assoc)
+			if(do_mysqli_fetch_assoc)
 			{
 				return @mssql_fetch_assoc($query_id);
 			}
@@ -427,13 +429,13 @@ class DB_Sql_vb_impex
 		if($this->type == 'mysql')
 		{
 			// retrieve row
-			if(do_mysql_fetch_assoc)
+			if(do_mysqli_fetch_assoc)
 			{
-				return @mysql_fetch_assoc($query_id);
+				return @mysqli_fetch_assoc($query_id);
 			}
 			else
 			{
-				return @mysql_fetch_array($query_id);
+				return @mysqli_fetch_array($query_id);
 			}
 		}
 	}
@@ -441,7 +443,7 @@ class DB_Sql_vb_impex
 	function free_result($query_id)
 	{
 		// retrieve row
-		return @mysql_free_result($query_id);
+		return @mysqli_free_result($query_id);
 	}
 
 	function query_first($query_string, $type = DBARRAY_BOTH)
@@ -464,38 +466,38 @@ class DB_Sql_vb_impex
 	function data_seek($pos, $query_id)
 	{
 		// goes to row $pos
-		return @mysql_data_seek($query_id, $pos);
+		return @mysqli_data_seek($query_id, $pos);
 	}
 
 	function num_rows($query_id)
 	{
 		// returns number of rows in query
-		return mysql_num_rows($query_id);
+		return mysqli_num_rows($query_id);
 	}
 
 	function num_fields($query_id)
 	{
 		// returns number of fields in query
-		return mysql_num_fields($query_id);
+		return mysqli_num_fields($query_id);
 	}
 
 	function field_name($query_id, $columnnum)
 	{
 		// returns the name of a field in a query
-		return mysql_field_name($query_id, $columnnum);
+		return mysqli_field_name($query_id, $columnnum);
 	}
 
 	function insert_id()
 	{
 		// returns last auto_increment field number assigned
-		return mysql_insert_id($this->link_id);
+		return mysqli_insert_id($this->link_id);
 	}
 
 	function close()
 	{
 		// closes connection to the database
 
-		return mysql_close($this->link_id);
+		return mysqli_close($this->link_id);
 	}
 
 	function print_query($htmlize = true)
@@ -508,7 +510,7 @@ class DB_Sql_vb_impex
 	function escape_string($string)
 	{
 		// escapes characters in string depending on Characterset
-		return mysql_escape_string($string);
+		return mysqli_escape_string($string);
 	}
 
 	function halt($msg)
@@ -517,8 +519,8 @@ class DB_Sql_vb_impex
 		{
 			if ($this->type == 'mysql')
 			{
-				$this->errdesc = mysql_error($this->link_id);
-				$this->errno = mysql_errno($this->link_id);
+				$this->errdesc = mysqli_error($this->link_id);
+				$this->errno = mysqli_errno($this->link_id);
 			}
 			if ($this->type == 'sqlsrv')
 			{
@@ -551,11 +553,12 @@ class DB_Sql_vb_impex
 			{
 				$message .= $this->type . ' error number: ' . $this->errno . "$delimiter$delimiter";
 			}
+
 			$message .= 'Date: ' . date('l dS of F Y h:i:s A') . $delimiter;
 			$message .= 'Database: ' . $this->database . $delimiter;
 			if ($this->type == 'mysql')
 			{
-				$message .= 'MySQL error: ' .mysql_error() . $delimiter;
+				$message .= 'MySQL error: ' .mysqli_error() . $delimiter;
 			}
 
 			echo "<html><head><title>ImpEx Database Error</title>";

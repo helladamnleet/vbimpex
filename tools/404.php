@@ -5,7 +5,7 @@
 || # ----------------------------------------------------------------
 || # All PHP code in this file is Copyright 2000-2014 vBulletin Solutions Inc.
 || # This code is made available under the Modified BSD License -- see license.txt
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 /**
@@ -368,30 +368,30 @@ if (!$action)
 
 // If we are here we have data to look up and redirect to a vBulletin page.
 
-$link = @mysql_connect($server, $user, $password);
+$link = @mysqli_connect($server, $user, $password);
 if (!$link)
 {
-	#die('Could not connect: ' . mysql_error());
+	#die('Could not connect: ' . mysqli_error());
 	$new_url = $standard_404;
 }
-$db_selected = @mysql_select_db($database, $link);
+$db_selected = @mysqli_select_db($database, $link);
 
 if (!$db_selected)
 {
-	#die ('Can\'t use foo : ' . mysql_error());
+	#die ('Can\'t use foo : ' . mysqli_error());
 	$new_url = $standard_404;
 }
 
 if ($sql)
 {
-	$result = @mysql_query($sql);
-	$row = @mysql_fetch_row($result);
+	$result = @mysqli_query($sql);
+	$row = @mysqli_fetch_row($result);
 
 	if (!$row[0])
 	{
 		$action = 'Original data missing';
 	}
-	@mysql_free_result($result);
+	@mysqli_free_result($result);
 }
 
 // Just incase
@@ -458,10 +458,10 @@ if ($do_logs)
 	)
 	";
 
-	mysql_query($sql);
+	mysqli_query($sql);
 }
 
-@mysql_close($link);
+@mysqli_close($link);
 
 // Do the new redirect
 if ($do_404)

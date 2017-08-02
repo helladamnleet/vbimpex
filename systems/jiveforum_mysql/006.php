@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* jiveforum_mysql_006 Import Post module
+* jiveforum_mysqli_006 Import Post module
 *
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_006 extends jiveforum_mysql_000
+class jiveforum_mysqli_006 extends jiveforum_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '005';
 	var $_modulestring 	= 'Import Post';
 
-	function jiveforum_mysql_006()
+	function jiveforum_mysqli_006()
 	{
 		// Constructor
 	}
@@ -96,7 +96,7 @@ class jiveforum_mysql_006 extends jiveforum_mysql_000
 		}
 
 		// Get an array of post details
-		$post_array 		= $this->get_jiveforum_mysql_post_details($Db_source, $source_database_type, $source_table_prefix, $post_start_at, $post_per_page);
+		$post_array 		= $this->get_jiveforum_mysqli_post_details($Db_source, $source_database_type, $source_table_prefix, $post_start_at, $post_per_page);
 		#$user_ids_array 	= $this->get_user_ids($Db_target, $target_database_type, $target_table_prefix, $do_int_val = false);
 		#$user_name_array 	= $this->get_username($Db_target, $target_database_type, $target_table_prefix);
 		#$thread_ids_array 	= $this->get_threads_ids($Db_target, $target_database_type, $target_table_prefix);

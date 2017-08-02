@@ -9,18 +9,18 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* jiveforum_mysql_001 Check system module
+* jiveforum_mysqli_001 Check system module
 *
 * @package			ImpEx.jiveforum_mysql
 *
 */
-class jiveforum_mysql_001 extends jiveforum_mysql_000
+class jiveforum_mysqli_001 extends jiveforum_mysqli_000
 {
 	var $_version = "0.0.1";
 	var $_modulestring 	= 'Check and update database';
 
 
-	function jiveforum_mysql_001()
+	function jiveforum_mysqli_001()
 	{
 	}
 

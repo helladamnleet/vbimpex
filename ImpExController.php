@@ -5,7 +5,7 @@
 || # ----------------------------------------------------------------
 || # All PHP code in this file is Copyright 2000-2014 vBulletin Solutions Inc.
 || # This code is made available under the Modified BSD License -- see license.txt
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 /**
@@ -36,7 +36,7 @@ class ImpExController
 	* Empty
 	*
 	*/
-	function ImpExController()
+	function __construct()
 	{
 	}
 
@@ -115,14 +115,15 @@ class ImpExController
 		$session_db = $Db_object->query("SELECT data FROM {$targettableprefix}datastore WHERE title = 'ImpExSession'");
 
 		// TODO: switch on database type.
-		if (mysql_num_rows($session_db))
+		if (mysqli_num_rows($session_db))
 		{
-			$session_data = mysql_result($session_db, 0, 'data');
+			$session_data = mysqli_fetch_assoc($session_db);
+      print_r($session_data);
 		}
 
 		if ($session_data)
 		{
-			return unserialize($session_data);
+			return unserialize($session_data['data']);
 		}
 		else
 		{

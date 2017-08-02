@@ -14,7 +14,7 @@
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_000 extends ImpExModule
+class ikon_mysqli_000 extends ImpExModule
 {
 	/**
 	* Class version
@@ -49,12 +49,12 @@ class ikon_mysql_000 extends ImpExModule
 	);
 
 
-	function ikon_mysql_000()
+	function ikon_mysqli_000()
 	{
 	}
 
 
-	function ikon_mysql_html_2_bb($text)
+	function ikon_mysqli_html_2_bb($text)
 	{
 		$text = preg_replace('#<font(.*)>#U', '', $text);
 		$text = str_replace("</font>", '', $text);
@@ -80,7 +80,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_members_list(&$Db_object, &$databasetype, &$tableprefix, &$start, &$per_page)
+	function get_ikon_mysqli_members_list(&$Db_object, &$databasetype, &$tableprefix, &$start, &$per_page)
 	{
 		$return_array = array();
 
@@ -124,7 +124,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_forum_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_forum_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -168,7 +168,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_cat_details(&$Db_object, &$databasetype, &$tableprefix)
+	function get_ikon_mysqli_cat_details(&$Db_object, &$databasetype, &$tableprefix)
 	{
 		$return_array = array();
 
@@ -208,7 +208,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_moderator_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_moderator_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -255,7 +255,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_pmtext_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_pmtext_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -302,7 +302,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_poll_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_poll_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -349,7 +349,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_post_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_post_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -396,7 +396,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_thread_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_thread_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -443,7 +443,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_user_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_user_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -492,7 +492,7 @@ class ikon_mysql_000 extends ImpExModule
 	*
 	* @return	array
 	*/
-	function get_ikon_mysql_usergroup_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_usergroup_details(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -527,7 +527,7 @@ class ikon_mysql_000 extends ImpExModule
 		return $return_array;
 	}
 
-	function get_ikon_mysql_threads_ids($Db_object, $databasetype, $tableprefix)
+	function get_ikon_mysqli_threads_ids($Db_object, $databasetype, $tableprefix)
 	{
 
 		if ($databasetype == 'mysql')
@@ -551,7 +551,7 @@ class ikon_mysql_000 extends ImpExModule
 	}
 
 
-	function get_ikon_mysql_poll_state($Db_object, $databasetype, $tableprefix, $poll_thread_id)
+	function get_ikon_mysqli_poll_state($Db_object, $databasetype, $tableprefix, $poll_thread_id)
 	{
 		$state = 0;
 		if ($databasetype == 'mysql')
@@ -578,7 +578,7 @@ class ikon_mysql_000 extends ImpExModule
 		}
 	}
 
-	function get_ikon_mysql_vote_voters($Db_object, $databasetype, $tableprefix, $poll_thread_id)
+	function get_ikon_mysqli_vote_voters($Db_object, $databasetype, $tableprefix, $poll_thread_id)
 	{
 		if ($databasetype == 'mysql')
 		{
@@ -599,7 +599,7 @@ class ikon_mysql_000 extends ImpExModule
 	}
 
 
-	function get_ikon_mysql_attachment_rows(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
+	function get_ikon_mysqli_attachment_rows(&$Db_object, &$databasetype, &$tableprefix, $start_at, $per_page)
 	{
 		$return_array = array();
 
@@ -635,7 +635,7 @@ class ikon_mysql_000 extends ImpExModule
 	}
 
 
-	function get_ikon_mysql_attachment_details(&$Db_object, &$databasetype, &$tableprefix, $attach_id)
+	function get_ikon_mysqli_attachment_details(&$Db_object, &$databasetype, &$tableprefix, $attach_id)
 	{
 		if ($databasetype == 'mysql')
 		{
@@ -657,7 +657,7 @@ class ikon_mysql_000 extends ImpExModule
 	}
 
 
-	function get_ikon_mysql_attachment($path, $file_name)
+	function get_ikon_mysqli_attachment($path, $file_name)
 	{
 		$file_address = $path . "/" . $file_name;
 
@@ -699,7 +699,7 @@ class ikon_mysql_000 extends ImpExModule
 		return true;
 	}
 
-	function get_ikon_mysql_attachment_details_array(&$Db_object, &$databasetype, &$tableprefix)
+	function get_ikon_mysqli_attachment_details_array(&$Db_object, &$databasetype, &$tableprefix)
 	{
 		if ($databasetype == 'mysql')
 		{

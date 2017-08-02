@@ -9,19 +9,19 @@
 || ####################################################################
 \*======================================================================*/
 /**
-* ikon_mysql_004 Import User module
+* ikon_mysqli_004 Import User module
 *
 * @package			ImpEx.ikon_mysql
 *
 */
-class ikon_mysql_004 extends ikon_mysql_000
+class ikon_mysqli_004 extends ikon_mysqli_000
 {
 	var $_version 		= '0.0.1';
 	var $_dependent 	= '001';
 	var $_modulestring 	= 'Import User';
 
 
-	function ikon_mysql_004()
+	function ikon_mysqli_004()
 	{
 		// Constructor
 	}
@@ -107,7 +107,7 @@ class ikon_mysql_004 extends ikon_mysql_000
 
 
 		// Get an array of user details
-		$user_array 	= $this->get_ikon_mysql_user_details($Db_source, $source_database_type, $source_table_prefix, $user_start_at, $user_per_page);
+		$user_array 	= $this->get_ikon_mysqli_user_details($Db_source, $source_database_type, $source_table_prefix, $user_start_at, $user_per_page);
 
 		$user_group_ids_array = $this->get_imported_group_ids($Db_target, $target_database_type, $target_table_prefix);
 
