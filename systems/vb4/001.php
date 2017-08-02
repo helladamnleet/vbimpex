@@ -5,7 +5,7 @@
 || # ----------------------------------------------------------------
 || # All PHP code in this file is Copyright 2000-2014 vBulletin Solutions Inc.
 || # This code is made available under the Modified BSD License -- see license.txt
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 /**
@@ -16,12 +16,12 @@
 */
 class vb4_001 extends vb4_000
 {
-	function vb4_001(&$displayobject)
+	function __construct(&$displayobject)
 	{
 		$this->_modulestring = $displayobject->phrases['check_update_db'];
 	}
 
-	function init(&$sessionobject, &$displayobject, &$Db_target, &$Db_source)
+	function init(&$sessionobject, &$displayobject, &$Db_target, &$Db_source, $resume=false)
 	{
 		$displayobject->update_basic('title', $displayobject->phrases['get_db_info']);
 		$displayobject->update_html($displayobject->do_form_header('index','001'));

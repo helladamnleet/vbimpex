@@ -5,7 +5,7 @@
 || # ----------------------------------------------------------------
 || # All PHP code in this file is Copyright 2000-2014 vBulletin Solutions Inc.
 || # This code is made available under the Modified BSD License -- see license.txt
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 /**
@@ -26,7 +26,7 @@ class vb4_000 extends ImpExModule
 	*/
 	var $_version = '4.0.x - 4.2.x';
 	var $_tier = '2';
-	
+
 	/**
 	* Module string
 	*
@@ -54,12 +54,6 @@ class vb4_000 extends ImpExModule
 						'user', 'useractivation', 'userban', 'userfield', 'usergroup', 'usergroupleader', 'usergrouprequest',
 						'usernote', 'userpromotion', 'usertextfield', 'usertitle', 'cpsession'
 					);
-
-
-	function vb4_000()
-	{
-	}
-
 
 	function get_post_parent_id(&$Db_object, &$databasetype, &$tableprefix, $import_post_id)
 	{
@@ -93,7 +87,7 @@ class vb4_000 extends ImpExModule
 		}
 	}
 
-	function update_poll_ids(&$Db_object, &$databasetype, &$tableprefix)
+	function update_poll_ids($Db_object, $databasetype, $tableprefix)
 	{
 		if ($databasetype == 'mysql')
 		{

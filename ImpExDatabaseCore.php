@@ -39,9 +39,6 @@ class ImpExDatabaseCore extends ImpExFunction
 	* Empty
 	*
 	*/
-	function __constructor()
-	{
-	}
 
 	############
 	#

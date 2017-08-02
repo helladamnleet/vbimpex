@@ -431,7 +431,7 @@ class DB_Sql_vb_impex
 			// retrieve row
 			if(do_mysqli_fetch_assoc)
 			{
-				return @mysqli_fetch_assoc($query_id);
+				return @mysqli_fetch_assoc(MYSQLI_ASSOC);
 			}
 			else
 			{

@@ -5,7 +5,7 @@
 || # ----------------------------------------------------------------
 || # All PHP code in this file is Copyright 2000-2014 vBulletin Solutions Inc.
 || # This code is made available under the Modified BSD License -- see license.txt
-|| # http://www.vbulletin.com 
+|| # http://www.vbulletin.com
 || ####################################################################
 \*======================================================================*/
 /**
@@ -18,12 +18,12 @@ class vb4_003 extends vb4_000
 {
 	var $_dependent 	= '001';
 
-	function vb4_003($displayobject)
+	function __construct($displayobject)
 	{
 		$this->_modulestring = $displayobject->phrases['import_usergroup'];
 	}
 
-	function init(&$sessionobject, &$displayobject, &$Db_target, &$Db_source)
+	function init(&$sessionobject, &$displayobject, &$Db_target, &$Db_source, $resume = false)
 	{
 		if ($this->check_order($sessionobject,$this->_dependent))
 		{
