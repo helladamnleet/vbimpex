@@ -35,10 +35,10 @@ $impexconfig['passcode']	= '596d0eb1300aaec1100f204633013782';
 */
 
 $impexconfig['target']['server']		= 'localhost';
-$impexconfig['target']['user']			= '***REMOVED***';
-$impexconfig['target']['password']		= '***REMOVED***';
-$impexconfig['target']['database']		= '***REMOVED***';
-$impexconfig['target']['tableprefix']	= 'mm_';
+$impexconfig['target']['user']			= 'username';
+$impexconfig['target']['password']		= 'password';
+$impexconfig['target']['database']		= 'vbulletin_forum';
+$impexconfig['target']['tableprefix']	= '';
 
 /*
 # If the system that is being imported from uses a database,
@@ -59,9 +59,9 @@ $impexconfig['sourceexists']			= true;
 // mysql / mssql
 $impexconfig['source']['databasetype']	= 'mysql';  // mysql OR mssql
 $impexconfig['source']['server']		= 'localhost';
-$impexconfig['source']['user']			= '***REMOVED***';
-$impexconfig['source']['password']		= '***REMOVED***';
-$impexconfig['source']['database']		= '***REMOVED***';
+$impexconfig['source']['user']			= 'username';
+$impexconfig['source']['password']		= 'password';
+$impexconfig['source']['database']		= 'source';
 $impexconfig['source']['tableprefix']   = '';
 
 /*
