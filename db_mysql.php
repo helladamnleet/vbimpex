@@ -14,9 +14,9 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);;
 // this class is used in all scripts
 // do NOT fiddle unless you know what you are doing
 
-define('DBARRAY_NUM', mysqli_NUM);
-define('DBARRAY_ASSOC', mysqli_ASSOC);
-define('DBARRAY_BOTH', mysqli_BOTH);
+define('DBARRAY_NUM', 'mysqli_NUM');
+define('DBARRAY_ASSOC', 'mysqli_ASSOC');
+define('DBARRAY_BOTH', 'mysqli_BOTH');
 
 if (!defined('IDIR')) { die; }
 
